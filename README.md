@@ -29,7 +29,7 @@ yacs h5py terminaltables tqdm pytorch transformers torch-geometric
 
 ### Datasets
 
-* Download the [video feature](https://rochester.app.box.com/s/8znalh6y5e82oml2lr7to8s6ntab6mav)  provided by [2D-TAN](https://github.com/microsoft/2D-TAN).  The groundtruth file is already uploaded in the `dataset` folder, where I directly use the [groundtruth file of 2D-TAN](https://github.com/microsoft/2D-TAN/tree/master/data) for ActivityNet and TACoS dataset, and I change the original form of Charades dataset in [2D-TAN (as .txt file)](https://github.com/microsoft/2D-TAN/tree/master/data/Charades-STA/) to be the same form with other two datasets (as .json file) for more simplicity of my code for loading datasets.
+* Download the [video feature](https://rochester.app.box.com/s/8znalh6y5e82oml2lr7to8s6ntab6mav)  provided by [2D-TAN](https://github.com/microsoft/2D-TAN).
 * Extract and put the feature in the corresponding dataset in the  `dataset` folder. For configurations of feature/groundtruth's paths, please refer to `./g2l/config/paths_catalog.py`. (ann_file is the annotation, feat_file is the video feature)
 
 
