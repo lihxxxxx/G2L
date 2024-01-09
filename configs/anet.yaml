@@ -1,0 +1,75 @@
+MODEL:
+  ARCHITECTURE: "G2L"
+  G2L:
+    NUM_CLIPS: 64
+    JOINT_SPACE_SIZE: 256
+    FEATPOOL:
+      INPUT_SIZE: 500
+      HIDDEN_SIZE: 512
+      KERNEL_SIZE: 4
+    FEAT2D:
+      NAME: "pool"
+      POOLING_COUNTS: [15,8,8]
+    TEXT_ENCODER:
+      NAME: "BERT"
+      AGGREGATION: "last2avg"
+    PREDICTOR:
+      HIDDEN_SIZE: 512
+      KERNEL_SIZE: 9
+      NUM_STACK_LAYERS: 4
+    LOSS:
+      MIN_IOU: 0.5
+      MAX_IOU: 1.0
+      NUM_POSTIVE_VIDEO_PROPOSAL: 1
+      NEGATIVE_VIDEO_IOU: 0.5
+      SENT_REMOVAL_IOU: 0.5
+      TAU_VIDEO: 0.1
+      TAU_SENT: 0.1
+      MARGIN: 0.3
+      CONTRASTIVE_WEIGHT: 0.1
+      AS_CL_WEIGHT: 1.0
+      AS_CL: False
+      GEO_K : 5
+      GEO_TOPK : 5
+      GEO_W : 0.0
+      SHAPLEY_NUM: 7
+      HARD_GEO_W: 1.0
+      SHAPLEY_W: 0.0005
+DATASETS:
+  NAME: "activitynet"
+  TRAIN: ("activitynet_train","activitynet_val")
+  TEST: ("activitynet_test",)
+  # TEST: ("activitynet_val_with_dense_feat2",)
+INPUT:
+  NUM_PRE_CLIPS: 256
+DATALOADER:
+  NUM_WORKERS: 0
+SOLVER:
+  # LR: 0.0008
+  # BATCH_SIZE: 48
+  # MILESTONES: (7, 15)
+  # MAX_EPOCH: 18
+  # TEST_PERIOD: 1
+  # CHECKPOINT_PERIOD: 1
+  # RESUME: False
+  # RESUME_EPOCH: 6
+  # FREEZE_BERT: 4
+  # ONLY_IOU: 6
+  # SKIP_TEST: 3
+  LR_SCHEDULER: "warmup_multistep"
+  WARMUP_EPOCHS: 4
+  LR: 0.0008
+  BATCH_SIZE: 48
+  MILESTONES: (2,4,6,8,10)
+  MAX_EPOCH: 17
+  TEST_PERIOD: 1
+  CHECKPOINT_PERIOD: 10
+  RESUME: False
+  RESUME_EPOCH: 6
+  FREEZE_BERT: 4
+  ONLY_IOU: 5
+  SKIP_TEST: 0
+TEST:
+  NMS_THRESH: 0.5
+  BATCH_SIZE: 48
+  CONTRASTIVE_SCORE_POW: 0.5
