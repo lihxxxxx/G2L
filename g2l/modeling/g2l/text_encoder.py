@@ -98,16 +98,12 @@ class DistilBert(nn.Module):
         return kernel, bias
 
     def transform_and_normalize(self,vecs, kernel, bias):
-        """应用变换，然后标准化
-        """
         if not (kernel is None or bias is None):
             vecs = torch.mm((vecs + bias),kernel)
         return self.normalize(vecs)
 
 
     def normalize(self,vecs):
-        """标准化
-        """
         return vecs / (vecs**2).sum(axis=1, keepdims=True)**0.5
 
     def compute_cov(self, m):#compute_cov(x) = np.cov(x.T)
@@ -116,11 +112,6 @@ class DistilBert(nn.Module):
         return cov_m
 
     def compute_kernel_bias(self,vecs):
-        """计算kernel和bias
-        最后的变换：y = (x + bias).dot(kernel)
-        """
-        # vecs = np.concatenate(vecs, axis=0)
-
         mu = vecs.mean(axis=0, keepdims=True)
         cov = np.cov(vecs.T)
         from scipy import linalg
