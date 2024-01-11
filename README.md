@@ -40,4 +40,4 @@ bash scripts\anet_train.sh anet
 
 ## 🎗️ Acknowledgement
 
-We appreciate [MMN](https://github.com/MCG-NJU/MMN), [2D-TAN](https://github.com/microsoft/2D-TAN) for video feature and configurations, and the [third-party implementation of 2D-TAN](https://github.com/ChenJoya/2dtan) for its implementation with `DistributedDataParallel`. Disclaimer: the performance gain of this [third-party implementation](https://github.com/ChenJoya/2dtan) is due to a tiny mistake of adding val set into training, yet our reproduced result is similar to the reported result in 2D-TAN paper.
+We appreciate [MMN](https://github.com/MCG-NJU/MMN), [2D-TAN](https://github.com/microsoft/2D-TAN) for video feature and configurations, and the [third-party implementation of 2D-TAN](https://github.com/ChenJoya/2dtan) for its implementation with `DistributedDataParallel`.
