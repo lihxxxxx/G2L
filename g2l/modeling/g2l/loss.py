@@ -251,7 +251,7 @@ class ContrastiveLoss(object):
             hard_sent_pos_list.append(pos_same_video.clone())
             
 
-            geo_dis_intra[geo_dis_intra == 1.0] = 0.0 # 无路径和post样本权重不变
+            geo_dis_intra[geo_dis_intra == 1.0] = 0.0
 
             hard_same_video = sent_same_video_feat * (geo_dis_intra+ 1.0 ) * intra_v2v * iou_neg_mask 
 
